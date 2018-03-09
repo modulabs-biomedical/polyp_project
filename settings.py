@@ -14,8 +14,8 @@ defaults_common = deepcopy(defaults)
 # --- train settings ---
 defaults_train = deepcopy(defaults)
 defaults_train.BATCH_SIZE = 1
-defaults_train.INPUT_WIDTH = 320    # 320
-defaults_train.INPUT_HEIGHT = 240   # 240
+defaults_train.INPUT_WIDTH = 128    # 320
+defaults_train.INPUT_HEIGHT = 128   # 240
 defaults_train.LEARNING_RATE = 0.01
 defaults_train.MOMENTUM = 0.99
 defaults_train.NUM_EPOCHS = 3
@@ -23,8 +23,8 @@ defaults_train.NUM_EPOCHS = 3
 # Note that rgb and gt images has the same filenames in different folders and in bmp extension
 # defaults_train.GT_DIR = 'C:/Work/FinalProject/CVC-EndoSceneStill/CVC-300/gtpolyp/' 
 # defaults_train.IMG_DIR = 'C:/Work/FinalProject/CVC-EndoSceneStill/CVC-300/bbdd/'
-defaults_train.GT_DIR = 'bbdd/' 
-defaults_train.IMG_DIR = 'gtpolyp/'
+defaults_train.IMG_DIR = 'bbdd/' 
+defaults_train.GT_DIR = 'gtpolyp/'
 # defaults_train.GT_DIR = '/tmp/saeedI/data/rgbimages' 
 # defaults_train.IMG_DIR = '/tmp/saeedI/data/gtmasks'
 defaults_train.NUM_WORKERS = 2

@@ -88,8 +88,8 @@ def train(args, model):
             outputs = model(inputs)
             
             print('images : ', images.shape)
-            print('labels : ', labels.shape)
-            print('outputs : ', outputs.shape)
+#             print('labels : ', labels.shape)
+            print('outputs(train) : ', outputs.shape)
             
             loss = criterion(outputs, targets)
             loss.backward()
@@ -138,17 +138,17 @@ def evaluate(args, model, criterion, val_loader):
         images = Variable(images)
         labels = Variable(labels)
         outputs = model(images)
-        print('images(eval) : ', images.shape)
-        print('labels(eval) : ', labels.shape)
+#         print('images(eval) : ', images.shape)
+#         print('labels(eval) : ', labels.shape)
         print('outputs(eval) : ', outputs.shape)
         
         outputs = outputs.view(1, -1)
 #         outputs = outputs.view(1, *outputs.size()[-2:])
-        print('output_size(changed) : ', outputs.size())
+        print('output_size_changed(eval) : ', outputs.size())
         
         labels = labels.view(1, -1)
 #         labels = labels.view(1, *labels.size())
-        print('labels.view(changed) : ', labels.size())
+#         print('labels.view(changed) : ', labels.size())
         loss = criterion(outputs, labels)
         
         losses.update(loss.data.cpu().numpy())

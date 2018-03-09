@@ -13,7 +13,7 @@ from tqdm import tqdm
 
 
 class GIANA(data.Dataset):
-    def __init__(self, img_root, gt_root, input_size=(320, 240), train=True, transform=None, target_transform=None, co_transform=None):
+    def __init__(self, img_root, gt_root, input_size=(128, 128), train=True, transform=None, target_transform=None, co_transform=None):
         self.img_root = img_root
         self.gt_root = gt_root
 
@@ -29,14 +29,16 @@ class GIANA(data.Dataset):
         # --- Check if the dataset is already partitoned and augmented ---
         # --- Otherwise. first partition the data, and them augment the training set ---
         temp = glob.glob(os.path.join(self.img_root, "train_*.bmp"))
+
         if not temp:
-            self.partition_data(1.)
+            print('if not temp !!!')
+            self.partition_data(0.8)
             self.augment_data()
 
         if train:
             self.img_filenames = glob.glob(os.path.join(self.img_root, "train_*.bmp"))
             self.gt_filenames = glob.glob(os.path.join(self.gt_root, "train_*.bmp")) # default : "train_*.bmp"
-
+            
             self.train_data = []
             for fname in self.img_filenames:
                 im = np.array(Image.open(fname).convert('RGB'))
@@ -48,6 +50,7 @@ class GIANA(data.Dataset):
             self.gt_filenames = glob.glob(os.path.join(self.gt_root, "val_*.bmp"))        
 
     def __getitem__(self, index):
+
         im = Image.open(self.img_filenames[index]).convert('RGB')
         target = Image.open(self.gt_filenames[index]).convert('L')
 
@@ -72,7 +75,7 @@ class GIANA(data.Dataset):
         nSamples = len(filenameList)
         nTraining = int(fraction_value*nSamples)
         nValidation = int((1-fraction_value)*nSamples)
-
+    
         dirs = [self.img_root, self.gt_root]
         for index in range(nTraining):
             for d in dirs:
