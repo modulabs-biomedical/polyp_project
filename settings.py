@@ -18,7 +18,7 @@ defaults_train.INPUT_WIDTH = 128    # 320
 defaults_train.INPUT_HEIGHT = 128   # 240
 defaults_train.LEARNING_RATE = 0.01
 defaults_train.MOMENTUM = 0.99
-defaults_train.NUM_EPOCHS = 3
+defaults_train.NUM_EPOCHS = 1
 
 # Note that rgb and gt images has the same filenames in different folders and in bmp extension
 # defaults_train.GT_DIR = 'C:/Work/FinalProject/CVC-EndoSceneStill/CVC-300/gtpolyp/' 

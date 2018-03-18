@@ -51,7 +51,7 @@ class Evaluation():
         B = np.array([1 if x > 0.5 else 0.0 for x in B])
         dice = np.sum(B[A==1.0])*2.0 / (np.sum(B) + np.sum(A))
         return dice
-
+    
     def specificity_sensitivity(self, gt, res):
         A = gt.flatten()
         B = res.flatten()
